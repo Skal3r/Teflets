@@ -117,7 +117,10 @@ public class BasicEntityController : MonoBehaviour
     //currently a test function - unsure if ondestroy reponsibility shoud be here or somewhere else
     private void OnDestroy()
     {
-        director.RemoveEntity(this.gameObject);
+        if (director != null)
+        {
+            director.RemoveEntity(this.gameObject);
+        }
     }
 
     //should only be used once on object creation to link to AI director - perhaps move to another class?
