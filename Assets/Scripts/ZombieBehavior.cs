@@ -29,6 +29,9 @@ public class ZombieBehavior : MonoBehaviour
             collision.gameObject.GetComponent<PlayerController>().DoDamage(damageAmount);
         }
     }
-
+    private void OnDestroy()
+    {
+        
+    }
 
 }

@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class AIDirector : MonoBehaviour
 {
-
-
+    private enum mood {
+        QUIET,
+        CHILL,
+        NORMAL,
+        AGRESSIVE,
+        PANIC
+    }
+    private mood currentMood = mood.NORMAL;
     public GameObject player;
     public int numEnemies = 5;
     [SerializeField]
@@ -16,16 +22,49 @@ public class AIDirector : MonoBehaviour
 
     public List<GameObject> playerCardinals;
 
+    AudioSource audioSource;
+
+    private Transform[] spawnPoints;
+
     public int NumKilled;
 
 
     // Start is called before the first frame update
-    private Transform[] spawnPoints;
 
     void Start()
     {
+
+        audioSource = GetComponent<AudioSource>();
+
         spawnPoints = GetComponentsInChildren<Transform>();
 
+
+    }
+
+    public void RemoveEntity(GameObject s)
+    {
+        NumKilled++;
+        entityList.Remove(s);
+       
+        
+        for (int i = 0; i < entityList.Count; i++)
+        {
+            aiController = entityList[i].GetComponent<BasicEntityController>();
+            aiController.targetLocationNum(1);
+
+        }
+        
+    }
+    public void ReachedDestination(BasicEntityController entity) {
+        entity.targetPlayer();
+ 
+    }
+
+    public void PlayerEnteredArea(AreaController area) {
+        enemyTypes = area.getEnemyTypes();
+        Debug.Log(spawnPoints.Length);
+        spawnPoints = area.getSpawnPoints();
+        Debug.Log(spawnPoints.Length);
         for (int i = 0; i < spawnPoints.Length; i++)
         {
 
@@ -43,30 +82,7 @@ public class AIDirector : MonoBehaviour
             }
             aiController.idleOff();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void RemoveEntity(GameObject s)
-    {
-        NumKilled++;
-        entityList.Remove(s);
-        Debug.Log("Gone");
+        area.disableCollider();
         
-        for (int i = 0; i < entityList.Count; i++)
-        {
-            aiController = entityList[i].GetComponent<BasicEntityController>();
-            aiController.targetLocationNum(1);
-
-        }
-        
-    }
-    public void ReachedDestination(BasicEntityController entity) {
-        entity.targetPlayer();
-        Debug.Log("wop");
     }
 }

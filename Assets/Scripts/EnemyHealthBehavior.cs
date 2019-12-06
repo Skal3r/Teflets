@@ -10,11 +10,9 @@ public class EnemyHealthBehavior : MonoBehaviour
     [SerializeField]
     private int MaxHP = 100;
     private int currentHP;
-
     // Start is called before the first frame update
     void Start()
     {
-        
         currentHP = MaxHP;
     }
 

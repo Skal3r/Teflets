@@ -6,7 +6,7 @@ public class BasicEntityController : MonoBehaviour
 {
 
     NavMeshAgent thisAgent;
-    public int moveSpeed;
+    public int moveSpeed = 5;
     private GameObject[] moveLocations;
     private GameObject player;
     private bool isIdle = true;
@@ -28,6 +28,7 @@ public class BasicEntityController : MonoBehaviour
     void Start()
     {
         thisAgent = GetComponent<NavMeshAgent>();
+        thisAgent.speed = moveSpeed;
 
     }
 
@@ -51,7 +52,7 @@ public class BasicEntityController : MonoBehaviour
         }
 
         if (thisAgent.remainingDistance < 0.9) {
-            director.ReachedDestination(this);
+            //director.ReachedDestination(this);
         }
 
     }
