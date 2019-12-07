@@ -126,4 +126,20 @@ public class AIDirector : MonoBehaviour
             currentMood = mood.QUIET;
         }
     }
+
+    public void setupAndAddBasicEntityController(BasicEntityController entity) {
+        if (entityList.Contains(entity.gameObject)) {
+            Debug.Log("welp");
+            return;
+        }
+        entityList.Add(entity.gameObject);
+        entity.setDirector(this);
+        entity.setPlayer(player);
+        entity.targetPlayer();
+        for (int k = 0; k < playerCardinals.Count; k++)
+        {
+            entity.addlocation(playerCardinals[k]);
+        }
+        entity.idleOff();
+    }
 }

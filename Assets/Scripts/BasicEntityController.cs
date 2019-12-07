@@ -132,6 +132,14 @@ public class BasicEntityController : MonoBehaviour
     {
         director = newDirector;
     }
+    public void addToDirector() {
+        Debug.Log("addtodirector called");
+        director.setupAndAddBasicEntityController(this);
+    }
+
+    public AIDirector getDirector() {
+        return director;
+    }
 
 
 }

@@ -9,6 +9,8 @@ public class SplitterBehavior : MonoBehaviour
     
     private float splitDistance = 1.75f;
     private GameObject spawn;
+
+    private AIDirector director;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,11 @@ public class SplitterBehavior : MonoBehaviour
 
         spawn = Instantiate(this.gameObject, transform.position, transform.rotation);
         spawn.transform.Translate(new Vector3(splitDistance, 0,0), Space.Self );
+        //not an elegant solution - exposes director directly to this class
+        spawn.GetComponent<BasicEntityController>().setDirector(this.GetComponent<BasicEntityController>().getDirector());
+        spawn.GetComponent<BasicEntityController>().addToDirector();
         transform.Translate(new Vector3( -splitDistance, 0, 0), Space.Self);
+
         
     }
 
