@@ -64,20 +64,43 @@ public class AIDirector : MonoBehaviour
         enemyTypes = area.getEnemyTypes();
         spawnPoints = area.getSpawnPoints();
         nextMood();
+        int numEnemies =0;
+        switch (currentMood) {
+            case mood.QUIET:
+                numEnemies = area.getMinEnemies();
+                break;
+            case mood.CHILL:
+                numEnemies = Random.Range(area.getMinEnemies(), area.getNormalEnemies());
+                break;
+            case mood.NORMAL:
+                numEnemies = area.getNormalEnemies();
+                break;
+            case mood.AGRESSIVE:
+                numEnemies = Random.Range(area.getNormalEnemies(), area.getMaxEnemies());
+                break;
+            case mood.PANIC:
+                numEnemies = area.getMaxEnemies();
+                break;
+        }
+        Debug.Log(numEnemies);
+        numEnemies = 20;
         if (enemyTypes.Count > 0) {
-            for (int i = 1; i < spawnPoints.Length; i++)
-            {
-               // Debug.Log(enemyTypes[0].name);
-                GameObject test =  Instantiate(enemyTypes[0], spawnPoints[i].transform.position, spawnPoints[i].transform.rotation);
-                Debug.Log(test.name);
+
+            int currentSpawnPoint = 0;
+            for (int i = 0; i < numEnemies; i++) {
+                if (currentSpawnPoint >= spawnPoints.Length){
+                    currentSpawnPoint = 0;
+                }
                 try
                 {
-                    entityList.Add(test);
+                    entityList.Add(Instantiate(enemyTypes[0], spawnPoints[currentSpawnPoint].transform.position, 
+                        spawnPoints[currentSpawnPoint].transform.rotation));
                 }
-                catch (System.Exception e) {
+                catch (System.Exception e)
+                {
                     Debug.Log(e);
                 }
-                /*
+
                 aiController = entityList[i].GetComponent<BasicEntityController>();
 
 
@@ -88,7 +111,9 @@ public class AIDirector : MonoBehaviour
                 {
                     aiController.addlocation(playerCardinals[k]);
                 }
-                aiController.idleOff();*/
+                aiController.idleOff();
+
+                currentSpawnPoint++;
             }
         area.disableCollider();
         }

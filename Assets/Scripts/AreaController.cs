@@ -29,6 +29,7 @@ public class AreaController : MonoBehaviour
             //redundancy- might change later if design warrants it
             Debug.Log("Spawn Points empty at start");
             spawnPoints = GetComponentsInChildren<Transform>();
+            
         }
     }
 
