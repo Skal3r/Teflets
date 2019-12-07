@@ -133,7 +133,6 @@ public class BasicEntityController : MonoBehaviour
         director = newDirector;
     }
     public void addToDirector() {
-        Debug.Log("addtodirector called");
         director.setupAndAddBasicEntityController(this);
     }
 
