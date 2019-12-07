@@ -11,19 +11,18 @@ public class AIDirector : MonoBehaviour
         AGRESSIVE,
         PANIC
     }
+
     private mood currentMood = mood.NORMAL;
     public GameObject player;
-    public int numEnemies = 5;
-    [SerializeField]
+
     private List<GameObject> enemyTypes;
-    [SerializeField]
+ 
     private List<GameObject> entityList;
     private BasicEntityController aiController;
+    [SerializeField]
+    private List<GameObject> playerCardinals;
 
-    public List<GameObject> playerCardinals;
-
-    AudioSource audioSource;
-
+  
     private Transform[] spawnPoints;
 
     public int NumKilled;
@@ -34,9 +33,10 @@ public class AIDirector : MonoBehaviour
     void Start()
     {
 
-        audioSource = GetComponent<AudioSource>();
-
+       
         spawnPoints = GetComponentsInChildren<Transform>();
+        //Random.InitState(675);
+        currentMood = (mood)Random.Range(0, 4);
 
 
     }
@@ -62,27 +62,45 @@ public class AIDirector : MonoBehaviour
 
     public void PlayerEnteredArea(AreaController area) {
         enemyTypes = area.getEnemyTypes();
-        Debug.Log(spawnPoints.Length);
         spawnPoints = area.getSpawnPoints();
-        Debug.Log(spawnPoints.Length);
-        for (int i = 0; i < spawnPoints.Length; i++)
-        {
-
-            entityList.Add(Instantiate(enemyTypes[0], spawnPoints[i].transform));
-
-            aiController = entityList[i].GetComponent<BasicEntityController>();
-
-
-            aiController.setDirector(this);
-            aiController.setPlayer(player);
-            aiController.targetPlayer();
-            for (int k = 0; k < playerCardinals.Count; k++)
+        nextMood();
+        if (enemyTypes.Count > 0) {
+            for (int i = 1; i < spawnPoints.Length; i++)
             {
-                aiController.addlocation(playerCardinals[k]);
+               // Debug.Log(enemyTypes[0].name);
+                GameObject test =  Instantiate(enemyTypes[0], spawnPoints[i].transform.position, spawnPoints[i].transform.rotation);
+                Debug.Log(test.name);
+                try
+                {
+                    entityList.Add(test);
+                }
+                catch (System.Exception e) {
+                    Debug.Log(e);
+                }
+                /*
+                aiController = entityList[i].GetComponent<BasicEntityController>();
+
+
+                aiController.setDirector(this);
+                aiController.setPlayer(player);
+                aiController.targetPlayer();
+                for (int k = 0; k < playerCardinals.Count; k++)
+                {
+                    aiController.addlocation(playerCardinals[k]);
+                }
+                aiController.idleOff();*/
             }
-            aiController.idleOff();
-        }
         area.disableCollider();
-        
+        }
+    }
+
+    private void nextMood() {
+        if (currentMood < mood.PANIC)
+        {
+            currentMood++;
+        }
+        else {
+            currentMood = mood.QUIET;
+        }
     }
 }

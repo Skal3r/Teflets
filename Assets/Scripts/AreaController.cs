@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class AreaController : MonoBehaviour
 {
-
+    /*
+     * 
+     * Add a ratio/chance to spawn for a given entity - 
+    [SerializeField]
+    private Dictionary<GameObject, int> entityCounts = new Dictionary<GameObject, int>();
+    */
     [SerializeField]
     private Transform[] spawnPoints;
     [SerializeField]
@@ -16,13 +21,13 @@ public class AreaController : MonoBehaviour
     [SerializeField]
     private int maxEnemies=0;
 
-    private BoxCollider collider;
+    private BoxCollider NewCollider;
     public AIDirector director;
     // Start is called before the first frame update
     void Start()
     {
-        collider = GetComponent<BoxCollider>();
-        if (spawnPoints == null) {
+        NewCollider = GetComponent<BoxCollider>();
+        if (spawnPoints.Length==0) {
             //redundancy- might change later if design warrants it
             Debug.Log("Spawn Points empty at start");
             spawnPoints = GetComponentsInChildren<Transform>();
@@ -63,9 +68,9 @@ public class AreaController : MonoBehaviour
     }
 
     public void disableCollider() {
-        collider.enabled = false;
+        NewCollider.enabled = false;
     }
     public void enableCollider() {
-        collider.enabled = true;
+        NewCollider.enabled = true;
     }
 }
