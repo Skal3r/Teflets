@@ -24,17 +24,12 @@ public class AreaController : MonoBehaviour
         collider = GetComponent<BoxCollider>();
         if (spawnPoints == null) {
             //redundancy- might change later if design warrants it
-            Debug.Log("Spawn Points empty");
+            Debug.Log("Spawn Points empty at start");
             spawnPoints = GetComponentsInChildren<Transform>();
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -48,7 +43,7 @@ public class AreaController : MonoBehaviour
         if (spawnPoints == null)
         {
             //redundancy- might change later if design warrants it
-            Debug.Log("Spawn Points empty getSpawnPoints");
+            Debug.Log("Spawn Points empty at getSpawnPoints");
             spawnPoints = GetComponentsInChildren<Transform>();
         }
         return spawnPoints;
