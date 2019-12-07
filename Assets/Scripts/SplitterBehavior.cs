@@ -30,17 +30,9 @@ public class SplitterBehavior : MonoBehaviour
 
 
 
-        spawn = Instantiate(GetComponentInParent<Transform>().gameObject, transform.position, transform.rotation);
+        spawn = Instantiate(this.gameObject, transform.position, transform.rotation);
         spawn.transform.Translate(new Vector3(3, 0,3), Space.Self );
 
     }
 
-
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Bullet")) { 
-            split();
-        }
-    }
 }
