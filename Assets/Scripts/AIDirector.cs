@@ -94,10 +94,9 @@ public class AIDirector : MonoBehaviour
                 {
                     Debug.Log(e);
                 }
-
                 aiController = entityList[i].GetComponent<BasicEntityController>();
 
-
+                
                 aiController.setDirector(this);
                 aiController.setPlayer(player);
                 aiController.targetPlayer();

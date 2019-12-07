@@ -5,6 +5,7 @@ using UnityEngine;
 public class SplitterShieldBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
+    public float shrinkAmount = 0.5f;
     private SplitterBehavior parent;
     void Start()
     {
@@ -19,7 +20,11 @@ public class SplitterShieldBehavior : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Bullet")) {
+        if (transform.localScale.x > 0.5)
+        {
+            transform.localScale -= new Vector3(shrinkAmount,0,0);
+        }
+        if (collision.gameObject.CompareTag("Bullet")&&transform.localScale.x>0.5) {
             //TODO: add behavior to shrink shield before splitting
             parent.split();
         }

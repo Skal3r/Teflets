@@ -8,6 +8,7 @@ public class SplitterBehavior : MonoBehaviour
 {
     
     private float sizeAmount = 0.5f;
+    private float splitDistance = 1.0f;
     private GameObject spawn;
     // Start is called before the first frame update
     void Start()
@@ -23,16 +24,14 @@ public class SplitterBehavior : MonoBehaviour
 
     public void split()
     {
-        if (transform.localScale.z > sizeAmount && transform.localScale.x > sizeAmount) 
-        {
-            transform.localScale -= new Vector3(sizeAmount, 0, sizeAmount);
-        }
+      
 
 
 
         spawn = Instantiate(this.gameObject, transform.position, transform.rotation);
-        spawn.transform.Translate(new Vector3(3, 0,3), Space.Self );
-
+        spawn.transform.Translate(new Vector3(splitDistance, 0,0), Space.Self );
+        transform.Translate(new Vector3( -splitDistance, 0, 0), Space.Self);
+        
     }
 
 }

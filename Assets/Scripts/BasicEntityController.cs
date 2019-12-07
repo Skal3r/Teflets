@@ -8,7 +8,9 @@ public class BasicEntityController : MonoBehaviour
     NavMeshAgent thisAgent;
     public int moveSpeed = 5;
     private GameObject[] moveLocations;
+    [SerializeField]
     private GameObject player;
+    [SerializeField]
     private bool isIdle = true;
     private int numLocations = 10;
     private int curr_Location_size = 0;
@@ -29,6 +31,7 @@ public class BasicEntityController : MonoBehaviour
     {
         thisAgent = GetComponent<NavMeshAgent>();
         thisAgent.speed = moveSpeed;
+
 
     }
 
