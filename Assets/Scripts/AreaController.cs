@@ -21,12 +21,10 @@ public class AreaController : MonoBehaviour
     [SerializeField]
     private int maxEnemies=0;
 
-    private BoxCollider NewCollider;
     public AIDirector director;
     // Start is called before the first frame update
     void Start()
     {
-        NewCollider = GetComponent<BoxCollider>();
         if (spawnPoints.Length==0) {
             //redundancy- might change later if design warrants it
             Debug.Log("Spawn Points empty at start");
@@ -68,9 +66,9 @@ public class AreaController : MonoBehaviour
     }
 
     public void disableCollider() {
-        NewCollider.enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
     }
     public void enableCollider() {
-        NewCollider.enabled = true;
+        GetComponent<BoxCollider>().enabled = true;
     }
 }

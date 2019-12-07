@@ -17,7 +17,7 @@ public class AIDirector : MonoBehaviour
 
     private List<GameObject> enemyTypes;
  
-    private List<GameObject> entityList;
+    private List<GameObject> entityList = new List<GameObject>();
     private BasicEntityController aiController;
     [SerializeField]
     private List<GameObject> playerCardinals;
