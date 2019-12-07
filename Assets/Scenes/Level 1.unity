@@ -517,7 +517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 10
-  atk_spd: 5
+  atk_spd: 7
   bulletObject: {fileID: 1565857798195437421, guid: adeb62a58e90862419699e467b263bbe,
     type: 3}
   bulletSpawnPoint: {fileID: 114538429}

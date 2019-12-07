@@ -40,7 +40,7 @@ public class AreaController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("entered");
-            director.PlayerEnteredArea(this);
+            director.SpawnEnemiesInArea(this);
         }
     }
     public Transform[] getSpawnPoints() {

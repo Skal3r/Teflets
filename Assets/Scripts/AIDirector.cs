@@ -32,21 +32,15 @@ public class AIDirector : MonoBehaviour
 
     void Start()
     {
-
-       
         spawnPoints = GetComponentsInChildren<Transform>();
-        //Random.InitState(675);
         currentMood = (mood)Random.Range(0, 4);
-
-
     }
 
     public void RemoveEntity(GameObject s)
     {
         NumKilled++;
         entityList.Remove(s);
-       
-        
+            
         for (int i = 0; i < entityList.Count; i++)
         {
             aiController = entityList[i].GetComponent<BasicEntityController>();
@@ -60,7 +54,7 @@ public class AIDirector : MonoBehaviour
  
     }
 
-    public void PlayerEnteredArea(AreaController area) {
+    public void SpawnEnemiesInArea(AreaController area) {
         enemyTypes = area.getEnemyTypes();
         spawnPoints = area.getSpawnPoints();
         nextMood();
@@ -83,7 +77,7 @@ public class AIDirector : MonoBehaviour
                 break;
         }
         Debug.Log(numEnemies);
-        numEnemies = 20;
+
         if (enemyTypes.Count > 0) {
 
             int currentSpawnPoint = 0;
@@ -117,6 +111,11 @@ public class AIDirector : MonoBehaviour
             }
         area.disableCollider();
         }
+    }
+    public void spawnSpecificEntity(AreaController area, GameObject entity, int currentSpawnPoint) {
+        spawnPoints = area.getSpawnPoints();
+        entityList.Add(Instantiate(entity, spawnPoints[currentSpawnPoint].transform.position, 
+                        spawnPoints[currentSpawnPoint].transform.rotation));
     }
 
     private void nextMood() {
