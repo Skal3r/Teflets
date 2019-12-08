@@ -11,19 +11,18 @@ public class AIDirector : MonoBehaviour
         AGRESSIVE,
         PANIC
     }
+
     private mood currentMood = mood.NORMAL;
     public GameObject player;
-    public int numEnemies = 5;
-    [SerializeField]
+
     private List<GameObject> enemyTypes;
-    [SerializeField]
-    private List<GameObject> entityList;
+ 
+    private List<GameObject> entityList = new List<GameObject>();
     private BasicEntityController aiController;
+    [SerializeField]
+    private List<GameObject> playerCardinals;
 
-    public List<GameObject> playerCardinals;
-
-    AudioSource audioSource;
-
+  
     private Transform[] spawnPoints;
 
     public int NumKilled;
@@ -33,20 +32,15 @@ public class AIDirector : MonoBehaviour
 
     void Start()
     {
-
-        audioSource = GetComponent<AudioSource>();
-
         spawnPoints = GetComponentsInChildren<Transform>();
-
-
+        currentMood = (mood)Random.Range(0, 4);
     }
 
     public void RemoveEntity(GameObject s)
     {
         NumKilled++;
         entityList.Remove(s);
-       
-        
+            
         for (int i = 0; i < entityList.Count; i++)
         {
             aiController = entityList[i].GetComponent<BasicEntityController>();
@@ -60,29 +54,92 @@ public class AIDirector : MonoBehaviour
  
     }
 
-    public void PlayerEnteredArea(AreaController area) {
+    public void SpawnEnemiesInArea(AreaController area) {
         enemyTypes = area.getEnemyTypes();
-        Debug.Log(spawnPoints.Length);
         spawnPoints = area.getSpawnPoints();
-        Debug.Log(spawnPoints.Length);
-        for (int i = 0; i < spawnPoints.Length; i++)
-        {
-
-            entityList.Add(Instantiate(enemyTypes[0], spawnPoints[i].transform));
-
-            aiController = entityList[i].GetComponent<BasicEntityController>();
-
-
-            aiController.setDirector(this);
-            aiController.setPlayer(player);
-            aiController.targetPlayer();
-            for (int k = 0; k < playerCardinals.Count; k++)
-            {
-                aiController.addlocation(playerCardinals[k]);
-            }
-            aiController.idleOff();
+        nextMood();
+        int numEnemies =0;
+        switch (currentMood) {
+            case mood.QUIET:
+                numEnemies = area.getMinEnemies();
+                break;
+            case mood.CHILL:
+                numEnemies = Random.Range(area.getMinEnemies(), area.getNormalEnemies());
+                break;
+            case mood.NORMAL:
+                numEnemies = area.getNormalEnemies();
+                break;
+            case mood.AGRESSIVE:
+                numEnemies = Random.Range(area.getNormalEnemies(), area.getMaxEnemies());
+                break;
+            case mood.PANIC:
+                numEnemies = area.getMaxEnemies();
+                break;
         }
+        Debug.Log(numEnemies);
+
+        if (enemyTypes.Count > 0) {
+
+            int currentSpawnPoint = 0;
+            for (int i = 0; i < numEnemies; i++) {
+                if (currentSpawnPoint >= spawnPoints.Length){
+                    currentSpawnPoint = 0;
+                }
+                try
+                {
+                    entityList.Add(Instantiate(enemyTypes[0], spawnPoints[currentSpawnPoint].transform.position, 
+                        spawnPoints[currentSpawnPoint].transform.rotation));
+                }
+                catch (System.Exception e)
+                {
+                    Debug.Log(e);
+                }
+                aiController = entityList[i].GetComponent<BasicEntityController>();
+
+                
+                aiController.setDirector(this);
+                aiController.setPlayer(player);
+                aiController.targetPlayer();
+                for (int k = 0; k < playerCardinals.Count; k++)
+                {
+                    aiController.addlocation(playerCardinals[k]);
+                }
+                aiController.idleOff();
+
+                currentSpawnPoint++;
+            }
         area.disableCollider();
-        
+        }
+    }
+    public void spawnSpecificEntity(AreaController area, GameObject entity, int currentSpawnPoint) {
+        spawnPoints = area.getSpawnPoints();
+        entityList.Add(Instantiate(entity, spawnPoints[currentSpawnPoint].transform.position, 
+                        spawnPoints[currentSpawnPoint].transform.rotation));
+    }
+
+    private void nextMood() {
+        if (currentMood < mood.PANIC)
+        {
+            currentMood++;
+        }
+        else {
+            currentMood = mood.QUIET;
+        }
+    }
+
+    public void setupAndAddBasicEntityController(BasicEntityController entity) {
+        if (entityList.Contains(entity.gameObject)) {
+            Debug.Log("welp");
+            return;
+        }
+        entityList.Add(entity.gameObject);
+        entity.setDirector(this);
+        entity.setPlayer(player);
+        entity.targetPlayer();
+        for (int k = 0; k < playerCardinals.Count; k++)
+        {
+            entity.addlocation(playerCardinals[k]);
+        }
+        entity.idleOff();
     }
 }
