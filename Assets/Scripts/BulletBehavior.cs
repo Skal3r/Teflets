@@ -13,6 +13,7 @@ public class BulletBehavior : MonoBehaviour
     public AudioClip fire1;
     AudioSource audioSource;
     public GameObject sparks;
+    public string[] targetTags;
 
     void Start()
     {
