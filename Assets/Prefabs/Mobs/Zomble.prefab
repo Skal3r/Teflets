@@ -196,9 +196,9 @@ GameObject:
   - component: {fileID: 6374286801304363341}
   - component: {fileID: 6374286801304363340}
   - component: {fileID: 7580286657657549114}
-  - component: {fileID: 4069096187134816789}
   - component: {fileID: 3092355033090810498}
   - component: {fileID: 7784600248546831894}
+  - component: {fileID: 1879898196071933884}
   m_Layer: 0
   m_Name: Zomble
   m_TagString: Enemy
@@ -317,19 +317,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 10
---- !u!114 &4069096187134816789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6374286801304363339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aa98ea20b53669459519c598524df19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHP: 100
 --- !u!114 &3092355033090810498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,6 +428,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1879898196071933884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6374286801304363339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c79b5e44d2f12404bb546132b17a80c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHP: 100
 --- !u!1 &8117443904003165253
 GameObject:
   m_ObjectHideFlags: 0

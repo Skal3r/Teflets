@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2015335238161314966}
   - component: {fileID: 2015335238161314967}
   - component: {fileID: 2015335238161314964}
-  - component: {fileID: 2015335238161314970}
   - component: {fileID: 2015335238161314973}
+  - component: {fileID: 6103004009007771853}
   m_Layer: 0
   m_Name: Splitter
   m_TagString: Enemy
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6486f9a07ab1a499fc95bdc81cb764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splitDistance: 1.75
 --- !u!114 &2015335238161314964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,19 +125,6 @@ MonoBehaviour:
   moveSpeed: 5
   player: {fileID: 0}
   isIdle: 0
---- !u!114 &2015335238161314970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015335238161314965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aa98ea20b53669459519c598524df19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHP: 100
 --- !u!195 &2015335238161314973
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -159,6 +147,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6103004009007771853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015335238161314965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c79b5e44d2f12404bb546132b17a80c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHP: 100
 --- !u!1 &2015335238475982376
 GameObject:
   m_ObjectHideFlags: 0

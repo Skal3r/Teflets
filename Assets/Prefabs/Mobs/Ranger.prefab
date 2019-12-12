@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6910311619237216128}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,10 +41,9 @@ GameObject:
   - component: {fileID: 6910311619447391990}
   - component: {fileID: 6910311619447391987}
   - component: {fileID: 6910311619447391984}
-  - component: {fileID: 6910311619447391985}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,19 +108,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6910311619447391985
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6910311619447391991}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6910311619734297253
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,11 +122,11 @@ GameObject:
   - component: {fileID: 6910311619734297255}
   - component: {fileID: 6910311619734297252}
   - component: {fileID: 5261304670456218409}
-  - component: {fileID: 114790899591347542}
   - component: {fileID: 7104853755299012969}
+  - component: {fileID: 4602590851091893880}
   m_Layer: 0
   m_Name: Ranger
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,7 +222,8 @@ MonoBehaviour:
   atkFrequency: 3
   timeBetweenBullets: 0.4
   shootingTime: 1
-  bullet: {fileID: 1565857798195437421, guid: adeb62a58e90862419699e467b263bbe, type: 3}
+  bullet: {fileID: 1565857798195437421, guid: 605f416352bc1a342ad9a1835ff5c231, type: 3}
+  targetTag: Player
 --- !u!114 &5261304670456218409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,19 +239,6 @@ MonoBehaviour:
   moveSpeed: 5
   player: {fileID: 0}
   isIdle: 1
---- !u!114 &114790899591347542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6910311619734297253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aa98ea20b53669459519c598524df19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHP: 100
 --- !u!195 &7104853755299012969
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -287,3 +261,16 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4602590851091893880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6910311619734297253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c79b5e44d2f12404bb546132b17a80c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHP: 100

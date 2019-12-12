@@ -34,7 +34,6 @@ public class HealthBehavior : MonoBehaviour
     //decrease Health points
     public void DoDamage(int amount)
     {
-
         currentHP -= amount;
     }
     public int getCurrentHP() {
