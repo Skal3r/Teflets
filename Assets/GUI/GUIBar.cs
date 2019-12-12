@@ -21,7 +21,7 @@ public class GUIBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        barDisplay = player.getHealth();
+        barDisplay = player.getHealth()/player.getMaxHealth();//divided by max HP to get num between 0 and 1
         
     }
 

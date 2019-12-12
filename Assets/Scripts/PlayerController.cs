@@ -136,6 +136,9 @@ public class PlayerController : MonoBehaviour
     public int getHealth() {
         return currentHealth;
     }
+    public int getMaxHealth() {
+        return MaxHealthPoints;
+     }
 
 
 
