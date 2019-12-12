@@ -140,5 +140,7 @@ public class BasicEntityController : MonoBehaviour
         return director;
     }
 
-
+    public float getDistanceToPlayer() {
+        return Vector3.Distance(this.transform.position, player.transform.position);
+    }
 }

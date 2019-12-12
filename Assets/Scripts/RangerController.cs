@@ -17,18 +17,20 @@ public class RangerController : MonoBehaviour
 
     [SerializeField]
     private GameObject bullet;
-    [SerializeField]
-    private GameObject player;
+
     private bool inAttackMode = true;
     private bool isAttacking = false;
     private float atkTimer = 0;//how long to fire bullets for
  
     private float atkwait = 0.0f;//time between bursts, if attacking
     private float shotTimer =0;
+
+    private BasicEntityController movement;
     // Start is called before the first frame update
     void Start()
     {
         shotTimer = timeBetweenBullets;
+        movement = GetComponent<BasicEntityController>();
     }
 
     // Update is called once per frame
@@ -49,11 +51,16 @@ public class RangerController : MonoBehaviour
         }
         if (atkTimer > shootingTime) {
             isAttacking = false;
+            movement.idleOff();
             atkTimer = 0;
         }
-        if (Vector3.Distance(transform.position, player.transform.position) < atkRange&&inAttackMode)
+        if (movement.getDistanceToPlayer() < atkRange && inAttackMode)
         {
+
+            movement.idleOn();
+            movement.lookAtPlayer();
             attack();
+
         }
 
 
