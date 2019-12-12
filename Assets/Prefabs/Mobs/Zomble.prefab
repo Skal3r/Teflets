@@ -195,7 +195,6 @@ GameObject:
   - component: {fileID: 6374286801304363342}
   - component: {fileID: 6374286801304363341}
   - component: {fileID: 6374286801304363340}
-  - component: {fileID: 809158216457858095}
   - component: {fileID: 7580286657657549114}
   - component: {fileID: 4069096187134816789}
   - component: {fileID: 3092355033090810498}
@@ -305,25 +304,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!95 &809158216457858095
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6374286801304363339}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7580286657657549114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  player: {fileID: 0}
+  isIdle: 1
 --- !u!82 &7784600248546831894
 AudioSource:
   m_ObjectHideFlags: 0
