@@ -58,6 +58,7 @@ public class AIDirector : MonoBehaviour
     public void SpawnEnemiesInArea(AreaController area) {
         enemyTypes = area.getEnemyTypes();
         spawnPoints = area.getSpawnPoints();
+        BasicEntityController controller;
         nextMood();
         int numEnemies =0;
         switch (currentMood) {
@@ -86,17 +87,19 @@ public class AIDirector : MonoBehaviour
                 if (currentSpawnPoint >= spawnPoints.Length){
                     currentSpawnPoint = 0;
                 }
+                controller = Instantiate(enemyTypes[0], spawnPoints[currentSpawnPoint].transform.position,
+                        spawnPoints[currentSpawnPoint].transform.rotation).GetComponent<BasicEntityController>();
                 try
                 {
-                    entityList.Add(Instantiate(enemyTypes[0], spawnPoints[currentSpawnPoint].transform.position, 
-                        spawnPoints[currentSpawnPoint].transform.rotation));
+                    
+                    entityList.Add(controller.gameObject);
                 }
                 catch (System.Exception e)
                 {
                     Debug.Log(e);
                 }
 
-                setupAndAddBasicEntityController(entityList[i].GetComponent<BasicEntityController>());
+                setupAndAddBasicEntityController(controller);
 
                 currentSpawnPoint++;
             }

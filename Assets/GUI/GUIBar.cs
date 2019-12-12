@@ -9,6 +9,7 @@ public class GUIBar : MonoBehaviour
     Vector2 size = new Vector2(60,20);
     public Texture2D progressBarEmpty;
     public Texture2D progressBarFull;
+    public PlayerController player;
     // Start is called before the first frame update
 
 
@@ -20,10 +21,7 @@ public class GUIBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        barDisplay += Time.deltaTime*0.2f;
-        if (barDisplay > 1) {
-            barDisplay = 0;
-        }
+        barDisplay = player.getHealth();
         
     }
 

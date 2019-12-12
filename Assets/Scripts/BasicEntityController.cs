@@ -16,6 +16,8 @@ public class BasicEntityController : MonoBehaviour
     private int curr_Location_size = 0;
     private GameObject currentGoal;
 
+    private float slowspeed = 5;
+    private float fastSpeed = 10;
     private AIDirector director;
 
 
@@ -55,7 +57,7 @@ public class BasicEntityController : MonoBehaviour
         }
 
         if (thisAgent.remainingDistance < 0.9) {
-            //director.ReachedDestination(this);
+            director.ReachedDestination(this);
         }
 
     }
@@ -68,6 +70,10 @@ public class BasicEntityController : MonoBehaviour
     //sets player as current target
     public void targetPlayer()
     {
+        if (Vector3.Distance(player.transform.position, this.transform.position) < 5) {
+
+            thisAgent.speed = fastSpeed;
+        }
         currentGoal = player;
     }
     //adds gameobject to target list,
@@ -84,6 +90,7 @@ public class BasicEntityController : MonoBehaviour
     //TODO: specify to set a gameobject as an overload
     public void targetLocationNum(int locNum)
     {
+        thisAgent.speed = slowspeed;
         if (locNum < curr_Location_size)
         {
             currentGoal = moveLocations[locNum];
