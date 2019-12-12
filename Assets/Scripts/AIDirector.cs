@@ -102,11 +102,7 @@ public class AIDirector : MonoBehaviour
         area.disableCollider();
         }
     }
-    public void spawnSpecificEntity(AreaController area, GameObject entity, int currentSpawnPoint) {
-        spawnPoints = area.getSpawnPoints();
-        entityList.Add(Instantiate(entity, spawnPoints[currentSpawnPoint].transform.position, 
-                        spawnPoints[currentSpawnPoint].transform.rotation));
-    }
+
 
     private void nextMood() {
         if (currentMood < mood.PANIC)
