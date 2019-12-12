@@ -40,12 +40,13 @@ public class AIDirector : MonoBehaviour
     {
         NumKilled++;
         entityList.Remove(s);
-            
+
         for (int i = 0; i < entityList.Count; i++)
         {
-            aiController = entityList[i].GetComponent<BasicEntityController>();
-            aiController.targetLocationNum(1);
-
+            if (entityList[i] != null) { 
+                aiController = entityList[i].GetComponent<BasicEntityController>();
+                aiController.targetLocationNum(1);
+            }
         }
         
     }

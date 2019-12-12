@@ -11,7 +11,7 @@ public class RangerController : MonoBehaviour
     [SerializeField]
     private float atkFrequency = 1.0f;
     [SerializeField]
-    private float timeBetweenBullets;//can be offloaded to a gun subclass
+    private float timeBetweenBullets = 0.1f;//can be offloaded to a gun subclass
     [SerializeField]
     private float shootingTime = 1.0f;
 
