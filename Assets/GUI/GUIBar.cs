@@ -21,8 +21,10 @@ public class GUIBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        barDisplay = (float)player.getCurrentHP()/player.getMaxHP();//divided by max HP to get num between 0 and 1
-        
+        if (player != null)
+        {
+            barDisplay = (float)player.getCurrentHP() / player.getMaxHP();//divided by max HP to get num between 0 and 1
+        }
     }
 
     private void OnGUI()

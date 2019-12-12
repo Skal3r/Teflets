@@ -66,7 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 5
   speed: 55
-  DamageAmount: 45
+  DamageAmount: 25
   impact: {fileID: 8300000, guid: 0add785271c4bec40a17a67aa80dbb5c, type: 3}
   fire1: {fileID: 8300000, guid: 8f80e9c8471775a49af19f3d53c518af, type: 3}
   sparks: {fileID: 2812088773539154736, guid: 2634be2073850d94c99e007f6ae074ee, type: 3}
