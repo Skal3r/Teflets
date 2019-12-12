@@ -94,17 +94,8 @@ public class AIDirector : MonoBehaviour
                 {
                     Debug.Log(e);
                 }
-                aiController = entityList[i].GetComponent<BasicEntityController>();
 
-                
-                aiController.setDirector(this);
-                aiController.setPlayer(player);
-                aiController.targetPlayer();
-                for (int k = 0; k < playerCardinals.Count; k++)
-                {
-                    aiController.addlocation(playerCardinals[k]);
-                }
-                aiController.idleOff();
+                setupAndAddBasicEntityController(entityList[i].GetComponent<BasicEntityController>());
 
                 currentSpawnPoint++;
             }
@@ -128,10 +119,7 @@ public class AIDirector : MonoBehaviour
     }
 
     public void setupAndAddBasicEntityController(BasicEntityController entity) {
-        if (entityList.Contains(entity.gameObject)) {
-            Debug.Log("welp");
-            return;
-        }
+
         entityList.Add(entity.gameObject);
         entity.setDirector(this);
         entity.setPlayer(player);

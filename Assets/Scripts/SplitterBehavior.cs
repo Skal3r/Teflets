@@ -6,11 +6,10 @@ using UnityEngine;
 
 public class SplitterBehavior : MonoBehaviour
 {
-    
+    [SerializeField]
     private float splitDistance = 1.75f;
     private GameObject spawn;
 
-    private AIDirector director;
     // Start is called before the first frame update
     void Start()
     {
