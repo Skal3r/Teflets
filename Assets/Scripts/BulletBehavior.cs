@@ -13,7 +13,7 @@ public class BulletBehavior : MonoBehaviour
     public AudioClip fire1;
     AudioSource audioSource;
     public GameObject sparks;
-    public string targetTag;
+    public string targetTag = "Enemy";
 
     void Start()
     {
@@ -38,9 +38,9 @@ public class BulletBehavior : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag(targetTag))
         {
-            collision.gameObject.GetComponent<EnemyHealthBehavior>().DoDamage(DamageAmount);
+            collision.gameObject.GetComponent<HealthBehavior>().DoDamage(DamageAmount);
         }
         //ugly line, but it instantiates sparks at the location of impact of this bullet and sets the player reference
        Instantiate(sparks, this.transform.position, this.transform.rotation).GetComponent<SparksBehaviour>().SetPlayerReference(player);

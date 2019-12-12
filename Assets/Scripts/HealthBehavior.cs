@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Audio;
 
-public class EnemyHealthBehavior : MonoBehaviour
+public class HealthBehavior : MonoBehaviour
 {
 
     [SerializeField]
@@ -20,20 +20,28 @@ public class EnemyHealthBehavior : MonoBehaviour
     //destroys this game object when health is gone
     void Update()
     {
-        if (currentHP <= 0) {
+        if (currentHP <= 0)
+        {
             Destroy(this.gameObject);
         }
     }
     //increase health points
-    public void Heal  (int heal){
+    public void Heal(int heal)
+    {
         currentHP += heal;
 
     }
     //decrease Health points
-    public void DoDamage(int amount) {
+    public void DoDamage(int amount)
+    {
 
         currentHP -= amount;
     }
-    
+    public int getCurrentHP() {
+        return currentHP;
+    }
+    public int getMaxHP() {
+        return MaxHP;
+    }
 
 }

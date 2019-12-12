@@ -756,6 +756,7 @@ GameObject:
   - component: {fileID: 392942523}
   - component: {fileID: 392942522}
   - component: {fileID: 392942525}
+  - component: {fileID: 392942529}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -975,6 +976,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &392942529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392942521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c79b5e44d2f12404bb546132b17a80c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHP: 100
 --- !u!1 &409786947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,7 +1487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressBarEmpty: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
   progressBarFull: {fileID: 10910, guid: 0000000000000000f000000000000000, type: 0}
-  player: {fileID: 392942522}
+  player: {fileID: 392942529}
 --- !u!4 &1039399422
 Transform:
   m_ObjectHideFlags: 0

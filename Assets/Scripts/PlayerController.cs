@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public float playerSpeed = 20f;
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         if (CanTakeDamage)
         {
-            currentHealth -= amount;
+            GetComponent<HealthBehavior>().DoDamage(amount);
             CanTakeDamage = false;
             Audio_source.PlayOneShot(hurtSound, 0.7f);
         }
@@ -133,12 +133,10 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public int getHealth() {
-        return currentHealth;
+    private void OnDestroy()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
-    public int getMaxHealth() {
-        return MaxHealthPoints;
-     }
 
 
 

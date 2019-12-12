@@ -17,7 +17,8 @@ public class RangerController : MonoBehaviour
 
     [SerializeField]
     private GameObject bullet;
-
+    [SerializeField]
+    private string targetTag = "Player";
     private bool inAttackMode = true;
     private bool isAttacking = false;
     private float atkTimer = 0;//how long to fire bullets for
@@ -31,7 +32,8 @@ public class RangerController : MonoBehaviour
     {
         shotTimer = timeBetweenBullets;
         movement = GetComponent<BasicEntityController>();
-    }
+        bullet.GetComponent<BulletBehavior>().setTargetTag(targetTag);
+            }
 
     // Update is called once per frame
     void Update()
