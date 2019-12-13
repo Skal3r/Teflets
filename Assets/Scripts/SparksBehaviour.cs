@@ -21,7 +21,7 @@ public class SparksBehaviour : MonoBehaviour
         float vol = 0.7f;
         if (playerReference!= null) {
             vol =
-                3.0f / Vector3.Distance(playerReference.transform.position, this.transform.position);
+                2.0f / Vector3.Distance(playerReference.transform.position, this.transform.position);
         }
        
         audioSource = GetComponent<AudioSource>();

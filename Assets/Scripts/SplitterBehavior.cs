@@ -28,7 +28,7 @@ public class SplitterBehavior : MonoBehaviour
         spawn = Instantiate(this.gameObject, transform.position, transform.rotation);
         spawn.transform.Translate(new Vector3(splitDistance, 0,0), Space.Self );
         //not an elegant solution - exposes director directly to this class
-        spawn.GetComponent<BasicEntityController>().setDirector(this.GetComponent<BasicEntityController>().getDirector());
+        spawn.GetComponent<BasicEntityController>().setDirector(AIDirector.instance);
         spawn.GetComponent<BasicEntityController>().addToDirector();
         transform.Translate(new Vector3( -splitDistance, 0, 0), Space.Self);
 

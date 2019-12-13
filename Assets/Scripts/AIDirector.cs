@@ -12,6 +12,8 @@ public class AIDirector : MonoBehaviour
         PANIC
     }
 
+    public static AIDirector instance =null;
+
     private mood currentMood = mood.NORMAL;
     public GameObject player;
 
@@ -29,6 +31,16 @@ public class AIDirector : MonoBehaviour
 
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this) {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -124,10 +136,13 @@ public class AIDirector : MonoBehaviour
         entity.setDirector(this);
         entity.setPlayer(player);
         entity.targetPlayer();
+        Debug.Log("SETUP and ADD");
         for (int k = 0; k < playerCardinals.Count; k++)
         {
             entity.addlocation(playerCardinals[k]);
         }
         entity.idleOff();
     }
+
+
 }

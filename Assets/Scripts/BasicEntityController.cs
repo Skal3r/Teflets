@@ -7,6 +7,7 @@ public class BasicEntityController : MonoBehaviour
 
     NavMeshAgent thisAgent;
     public int moveSpeed = 5;
+    [SerializeField]
     private GameObject[] moveLocations;
     [SerializeField]
     private GameObject player;
@@ -14,6 +15,7 @@ public class BasicEntityController : MonoBehaviour
     private bool isIdle = true;
     private int numLocations = 10;
     private int curr_Location_size = 0;
+    [SerializeField]
     private GameObject currentGoal;
 
     private float slowspeed = 5;
@@ -42,13 +44,17 @@ public class BasicEntityController : MonoBehaviour
     {//if not idle, then move(2 states)
         if (!isIdle)
         {
-            thisAgent.SetDestination(currentGoal.transform.position);
-
+            try
+            {
+                thisAgent.SetDestination(currentGoal.transform.position);
+            }
+            catch { }
 
         }
         //looks at player or current goal
         if (player && lookAtPLayer)
         {
+
             transform.LookAt(player.transform.position);
         }
         else if (currentGoal != null)
