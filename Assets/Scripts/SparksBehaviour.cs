@@ -5,25 +5,25 @@ using UnityEngine;
 public class SparksBehaviour : MonoBehaviour
 {
 
-    public AudioClip impact;
+    [SerializeField]
+    private AudioClip impact;
    // public GameObject playerLocation;
     AudioSource audioSource;
     // Start is called before the first frame update
     private GameObject playerReference;
-
-
+  
     public SparksBehaviour(int i) {
 
     }
     //sets volume of audio to be relative to where player is 
     void Start()
     {
-        float vol = 0.7f;
+        float vol = 0.0f;
         if (playerReference!= null) {
             vol =
-                2.0f / Vector3.Distance(playerReference.transform.position, this.transform.position);
+                10.0f / Vector3.Distance(playerReference.transform.position, this.transform.position);
         }
-       
+        Debug.Log(vol);
         audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(impact, vol);
    

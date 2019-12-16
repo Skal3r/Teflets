@@ -43,7 +43,8 @@ public class BulletBehavior : MonoBehaviour
             collision.gameObject.GetComponent<HealthBehavior>().DoDamage(DamageAmount);
         }
         //ugly line, but it instantiates sparks at the location of impact of this bullet and sets the player reference
-       Instantiate(sparks, this.transform.position, this.transform.rotation).GetComponent<SparksBehaviour>().SetPlayerReference(player);
+        GameObject reference = Instantiate(sparks, this.transform.position, this.transform.rotation);
+        reference.GetComponent<SparksBehaviour>().SetPlayerReference(player);
 
 
         Destroy(this.gameObject);

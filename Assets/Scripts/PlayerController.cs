@@ -101,7 +101,8 @@ public class PlayerController : MonoBehaviour
         {
             if (atk_cooldown > 1 / atk_spd)//magic number I know, but it works
             {
-                Instantiate(bulletObject, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation).GetComponent<BulletBehavior>().SetPlayerReference(this.gameObject);
+                GameObject other = Instantiate(bulletObject, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
+                other.GetComponent<BulletBehavior>().SetPlayerReference(this.gameObject);
                 atk_cooldown = 0;
             }
         }
