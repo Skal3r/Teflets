@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private int currentHealth = 100;
+    public int MaxHealthPoints = 100;
+
 
     public AudioClip walkSound;
     public AudioClip hurtSound;
@@ -21,10 +23,19 @@ public class PlayerController : MonoBehaviour
     public float stepTime = 0.7f;
     private float time_since_last_step = 0.0f;
 
-    public int MaxHealthPoints = 100;
+  
+    public float MaxDashTime = 0.5f;
+    public float dashSpeed = 20f;
+    private bool isDashing = false;
+    private float dashTimer =0;
+    private float dashCooldown = 1.0f;
+    private float dashCooldownTimer = 0.0f;
+
+
     private float damageTime = 0.5f;
     private float MaxDamageTime = 0.5f;
     private bool CanTakeDamage = true;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -97,14 +108,30 @@ public class PlayerController : MonoBehaviour
     {
         atk_cooldown += Time.deltaTime;
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1")&&!isDashing)//if it is not dashing
         {
-            if (atk_cooldown > 1 / atk_spd)//magic number I know, but it works
+            if (atk_cooldown > 1 / atk_spd)//magic number I know, but it works. Moreimportantly, need to make this consistent across all similar operations
             {
                 GameObject other = Instantiate(bulletObject, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
                 other.GetComponent<BulletBehavior>().SetPlayerReference(this.gameObject);
                 atk_cooldown = 0;
             }
+        }
+
+    }
+
+    private void dash() {
+        float tempSpeed = dashSpeed;
+        
+        if (!isDashing) {
+            playerSpeed = playerSpeed + tempSpeed;
+            isDashing = true;
+            dashTimer = 0.0f;
+        }
+        dashTimer += Time.deltaTime;
+        if (dashTimer > MaxDashTime) {
+            playerSpeed -= tempSpeed;
+            isDashing = false;
         }
 
     }
