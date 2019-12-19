@@ -1,3 +1,0 @@
-https://www.atlassian.com/git/tutorials/saving-changes/gitignore#ignore-patterns
-atlassian.com/git/tutorials
-https://docs.unity3d.com/560/Documentation/Manual/GettingStarted.html

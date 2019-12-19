@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public float playerSpeed = 20f;
+    [SerializeField]
+    private float sprintspeed = 1.5f;
+    private bool isSprinting = false;
     private Vector3 moveVelocity;
     Rigidbody rb;
     public float atk_spd = 1.5f;
@@ -24,13 +27,6 @@ public class PlayerController : MonoBehaviour
     private float time_since_last_step = 0.0f;
 
   
-    public float MaxDashTime = 0.5f;
-    public float dashSpeed = 20f;
-    private bool isDashing = false;
-    private float dashTimer =0;
-    private float dashCooldown = 1.0f;
-    private float dashCooldownTimer = 0.0f;
-
 
     private float damageTime = 0.5f;
     private float MaxDamageTime = 0.5f;
@@ -91,6 +87,7 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
+        float moveMultiplier =1;
         time_since_last_step += Time.deltaTime;
         Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
@@ -101,14 +98,21 @@ public class PlayerController : MonoBehaviour
                 time_since_last_step = 0;
             }
         }
-
-        moveVelocity = moveInput * playerSpeed;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            moveMultiplier = sprintspeed;
+            isSprinting = true;
+        }
+        else {
+            isSprinting = false;
+        }
+        moveVelocity = moveInput * playerSpeed*moveMultiplier;
     }
     void Attack()
     {
         atk_cooldown += Time.deltaTime;
 
-        if (Input.GetButton("Fire1")&&!isDashing)//if it is not dashing
+        if (Input.GetButton("Fire1")&&!isSprinting)//if it is not dashing
         {
             if (atk_cooldown > 1 / atk_spd)//magic number I know, but it works. Moreimportantly, need to make this consistent across all similar operations
             {
@@ -120,21 +124,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void dash() {
-        float tempSpeed = dashSpeed;
-        
-        if (!isDashing) {
-            playerSpeed = playerSpeed + tempSpeed;
-            isDashing = true;
-            dashTimer = 0.0f;
-        }
-        dashTimer += Time.deltaTime;
-        if (dashTimer > MaxDashTime) {
-            playerSpeed -= tempSpeed;
-            isDashing = false;
-        }
 
-    }
     // Update is called once per frame
     void Update()
     {
