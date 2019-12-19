@@ -4,24 +4,31 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
-    public float playerSpeed = 20f;
+    [SerializeField]
+    private float playerSpeed = 20f;
     [SerializeField]
     private float sprintspeed = 1.5f;
     private bool isSprinting = false;
     private Vector3 moveVelocity;
-    Rigidbody rb;
-    public float atk_spd = 1.5f;
-    public GameObject bulletObject;
-    public GameObject bulletSpawnPoint;
+    private Rigidbody rb;
+    [SerializeField]
+    private float atk_spd = 1.5f;
+    [SerializeField]
+    private GameObject bulletObject;
+    [SerializeField]
+    private GameObject bulletSpawnPoint;
     private float atk_cooldown = 0;
 
     [SerializeField]
     private int currentHealth = 100;
-    public int MaxHealthPoints = 100;
+    [SerializeField]
+    private int MaxHealthPoints = 100;
 
 
-    public AudioClip walkSound;
-    public AudioClip hurtSound;
+    [SerializeField]
+    private AudioClip walkSound;
+    [SerializeField]
+    private AudioClip hurtSound;
     private AudioSource Audio_source;
     public float stepTime = 0.7f;
     private float time_since_last_step = 0.0f;

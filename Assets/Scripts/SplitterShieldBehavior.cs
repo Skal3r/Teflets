@@ -5,7 +5,8 @@ using UnityEngine;
 public class SplitterShieldBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float shrinkAmount = 0.5f;
+    [SerializeField]
+    private float shrinkAmount = 0.5f;
     private SplitterBehavior parent;
     void Start()
     {

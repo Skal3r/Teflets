@@ -5,7 +5,8 @@ using UnityEngine;
 public class ZombieBehavior : MonoBehaviour
 {
 
-    public int damageAmount = 10;
+    [SerializeField]
+    private int damageAmount = 10;
     private Animator anim;
     // Start is called before the first frame update
     void Start()

@@ -15,7 +15,8 @@ public class AIDirector : MonoBehaviour
     public static AIDirector instance =null;
 
     private mood currentMood = mood.NORMAL;
-    public GameObject player;
+    [SerializeField]
+    private GameObject player;
 
     private List<GameObject> enemyTypes;
  
@@ -26,8 +27,8 @@ public class AIDirector : MonoBehaviour
 
   
     private Transform[] spawnPoints;
-
-    public int NumKilled;
+    [SerializeField]
+    private int NumKilled;
 
 
     // Start is called before the first frame update

@@ -6,7 +6,8 @@ public class BasicEntityController : MonoBehaviour
 {
 
     NavMeshAgent thisAgent;
-    public int moveSpeed = 5;
+    [SerializeField]
+    private int moveSpeed = 5;
     [SerializeField]
     private GameObject[] moveLocations;
     [SerializeField]

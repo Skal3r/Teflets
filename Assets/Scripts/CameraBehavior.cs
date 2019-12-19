@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CameraBehavior : MonoBehaviour
 {
-    public GameObject Player;
-    public int camHeight = 75;
+    [SerializeField]
+    private GameObject Player;
+    [SerializeField]
+    private int camHeight = 75;
     // Start is called before the first frame update
     void Start()
     {

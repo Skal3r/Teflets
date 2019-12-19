@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class BulletBehavior : MonoBehaviour
 {
-    public float lifetime = 5;
-    public int speed = 5;
-    public int DamageAmount = 25;
+    [SerializeField]
+    private float lifetime = 5;
+    [SerializeField]
+    private int speed = 5;
+    [SerializeField]
+    private int DamageAmount = 25;
     private GameObject player;
     // Start is called before the first frame update
-    public AudioClip impact;
-    public AudioClip fire1;
+    [SerializeField]
+    private AudioClip impact;
+    [SerializeField]
+    private AudioClip fire1;
     AudioSource audioSource;
-    public GameObject sparks;
-    public string targetTag = "Enemy";
+    [SerializeField]
+    private GameObject sparks;
+    [SerializeField]
+    private string targetTag = "Enemy";
 
     void Start()
     {
