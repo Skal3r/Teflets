@@ -2199,7 +2199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09df72fdb35d9f549a238327d9cef821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 10
+  playerSpeed: 15
   sprintspeed: 1.5
   atk_spd: 7
   bulletObject: {fileID: 1565857798195437421, guid: adeb62a58e90862419699e467b263bbe,

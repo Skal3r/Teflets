@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9009462263718930931}
   - component: {fileID: 1774311991477397041}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 2587639648093132411}
   - component: {fileID: 8062148239676815559}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -329,9 +329,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4012c711bc5e15845bfcc463d22d9bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 6
+  moveLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   player: {fileID: 0}
   isIdle: 1
+  currentGoal: {fileID: 0}
 --- !u!82 &7784600248546831894
 AudioSource:
   m_ObjectHideFlags: 0

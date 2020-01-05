@@ -53,15 +53,20 @@ public class AIDirector : MonoBehaviour
     {
         NumKilled++;
         entityList.Remove(s);
+        adjustTargets();
+       
+    }
 
+    private void adjustTargets() {
         for (int i = 0; i < entityList.Count; i++)
         {
-            if (entityList[i] != null) { 
+            if (entityList[i] != null)
+            {
                 aiController = entityList[i].GetComponent<BasicEntityController>();
-                aiController.targetLocationNum(1);
+
+                aiController.targetLocationNum(Random.Range(0, 3));
             }
         }
-        
     }
     public void ReachedDestination(BasicEntityController entity) {
         entity.targetPlayer();
@@ -137,7 +142,6 @@ public class AIDirector : MonoBehaviour
         entity.setDirector(this);
         entity.setPlayer(player);
         entity.targetPlayer();
-        Debug.Log("SETUP and ADD");
         for (int k = 0; k < playerCardinals.Count; k++)
         {
             entity.addlocation(playerCardinals[k]);
