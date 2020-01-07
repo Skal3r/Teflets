@@ -7,7 +7,7 @@ public class BasicEntityController : MonoBehaviour
 
     NavMeshAgent thisAgent;
     [SerializeField]
-    private int moveSpeed = 5;
+    private int moveSpeed = 11;
     [SerializeField]
     private GameObject[] moveLocations;
     [SerializeField]
@@ -18,9 +18,10 @@ public class BasicEntityController : MonoBehaviour
     private int curr_Location_size = 0;
     [SerializeField]
     private GameObject currentGoal;
-
+    [SerializeField]
     private float slowspeed = 5;
-    private float fastSpeed = 10;
+    [SerializeField]
+    private float fastSpeed = 12;
     private AIDirector director;
 
 
@@ -101,6 +102,7 @@ public class BasicEntityController : MonoBehaviour
         if (locNum < curr_Location_size)
         {
             currentGoal = moveLocations[locNum];
+            thisAgent.speed = moveSpeed;
         }
     }
 

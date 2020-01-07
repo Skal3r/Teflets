@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float playerSpeed = 20f;
+    private float CurrentPlayerSpeed = 20f;
+
+    [SerializeField]
+    private float DefaultPlayerSpeed = 20f;
+
     [SerializeField]
     private float sprintspeed = 1.5f;
+    [SerializeField]
+    private float firingAndWalkSpeed = 15f;
     private bool isSprinting = false;
     private Vector3 moveVelocity;
     private Rigidbody rb;
@@ -29,6 +35,12 @@ public class PlayerController : MonoBehaviour
     private AudioClip walkSound;
     [SerializeField]
     private AudioClip hurtSound;
+    [SerializeField]
+    private Material hurtMaterial;
+    [SerializeField]
+    private Material defaultMaterial;
+
+
     private AudioSource Audio_source;
     public float stepTime = 0.7f;
     private float time_since_last_step = 0.0f;
@@ -113,7 +125,16 @@ public class PlayerController : MonoBehaviour
         else {
             isSprinting = false;
         }
-        moveVelocity = moveInput * playerSpeed*moveMultiplier;
+        if (Input.GetButton("Fire1") && !isSprinting)
+        {
+            CurrentPlayerSpeed = firingAndWalkSpeed;
+        }
+        else {
+            CurrentPlayerSpeed = DefaultPlayerSpeed;
+        }
+            
+
+        moveVelocity = moveInput * CurrentPlayerSpeed*moveMultiplier;
     }
     void Attack()
     {
@@ -126,6 +147,7 @@ public class PlayerController : MonoBehaviour
                 GameObject other = Instantiate(bulletObject, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
                 other.GetComponent<BulletBehavior>().SetPlayerReference(this.gameObject);
                 atk_cooldown = 0;
+
             }
         }
 
@@ -142,11 +164,14 @@ public class PlayerController : MonoBehaviour
         DamageStatus();
         if (CanTakeDamage)
         {
-            this.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+            this.GetComponent<MeshRenderer>().material = defaultMaterial;
+            //this.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
         }
         else
         {
-            this.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+
+            this.GetComponent<MeshRenderer>().material = hurtMaterial;
+            //this.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         }
     }
 
