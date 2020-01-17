@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private int MaxHealthPoints = 100;
 
 
+
     [SerializeField]
     private AudioClip walkSound;
     [SerializeField]
@@ -55,6 +56,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
         rb = GetComponent<Rigidbody>();
         Audio_source = GetComponent<AudioSource>();
     }
@@ -173,6 +175,8 @@ public class PlayerController : MonoBehaviour
             this.GetComponent<MeshRenderer>().material = hurtMaterial;
             //this.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         }
+
+      
     }
 
 
