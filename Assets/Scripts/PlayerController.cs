@@ -176,7 +176,7 @@ public class PlayerController : MonoBehaviour
             //this.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         }
 
-      
+       
     }
 
 
