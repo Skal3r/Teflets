@@ -11,7 +11,7 @@ public class CameraBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GetComponent<SceneFader>().enabled = true;
     }
 
 

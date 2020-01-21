@@ -27,7 +27,7 @@ public class AreaController : MonoBehaviour
     {
         if (spawnPoints.Length==0) {
             //redundancy- might change later if design warrants it
-            Debug.Log("Spawn Points empty at start");
+           
             spawnPoints = GetComponentsInChildren<Transform>();
             
         }
@@ -39,7 +39,7 @@ public class AreaController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("entered");
+
             director.SpawnEnemiesInArea(this);
         }
     }
@@ -47,7 +47,7 @@ public class AreaController : MonoBehaviour
         if (spawnPoints == null)
         {
             //redundancy- might change later if design warrants it
-            Debug.Log("Spawn Points empty at getSpawnPoints");
+
             spawnPoints = GetComponentsInChildren<Transform>();
         }
         return spawnPoints;

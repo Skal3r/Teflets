@@ -344,6 +344,8 @@ MonoBehaviour:
   player: {fileID: 0}
   isIdle: 1
   currentGoal: {fileID: 0}
+  slowspeed: 5
+  fastSpeed: 12
 --- !u!82 &7784600248546831894
 AudioSource:
   m_ObjectHideFlags: 0
@@ -355,7 +357,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 71b075c7b08bd7e4a94373327cda12cc, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
