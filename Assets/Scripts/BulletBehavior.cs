@@ -28,6 +28,7 @@ public class BulletBehavior : MonoBehaviour
         audioSource.PlayOneShot(fire1, 0.7f);
     }
 
+
     // Update is called once per frame
     void FixedUpdate()
     {
